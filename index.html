@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="アダプラ - 今すぐ買える成人向け商品(アダルトグッズ)の紹介サイト。18歳未満の方はご利用いただけません。">
+<meta name="rating" content="RTA-5042-1996-1400-1577-RTA">
+<meta name="rating" content="adult">
+<title>アダプラ</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 64px;
+    background: #14141c;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+  body.age-gate-active { overflow: hidden; height: 100vh; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .age-gate {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,10,14,0.97);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .age-gate-box {
+    max-width: 420px; text-align: center;
+    background: #1e1e29; border-radius: 16px; padding: 32px 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .age-gate-title { font-size: 1.3rem; font-weight: 800; margin: 0 0 12px; }
+  .age-gate-text { font-size: 0.92rem; line-height: 1.7; color: #ccc; margin: 0 0 24px; }
+  .age-gate-buttons { display: flex; flex-direction: column; gap: 10px; }
+  .age-gate-buttons button, .age-gate-buttons a {
+    display: block; padding: 12px; border-radius: 8px; border: none;
+    font-size: 0.95rem; font-weight: 700; text-decoration: none; cursor: pointer;
+  }
+  #age-gate-yes { background: #e0245e; color: #fff; }
+  #age-gate-no { background: #333; color: #ccc; }
+  h1 { font-size: 1.8rem; font-weight: 800; text-align: center; margin: 0 0 8px; }
+  .subtitle { text-align: center; color: #aaa; font-size: 0.95rem; margin: 0 0 20px; }
+  .pr-note {
+    display: block; width: fit-content; max-width: 100%; margin: 0 auto 24px;
+    padding: 8px 18px; text-align: center; font-size: 0.82rem; font-weight: 600;
+    color: #14141c; background: #ffb84d; border-radius: 999px;
+  }
+  #product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    position: relative;
+    display: flex; flex-direction: column;
+    background: #1e1e29; border-radius: 12px; padding: 12px;
+    text-decoration: none; color: #eee;
+  }
+  .card img { width: 100%; height: 190px; object-fit: cover; border-radius: 8px; background: #333; margin-bottom: 10px; }
+  .card .maker { font-size: 0.72rem; color: #999; margin-bottom: 4px; }
+  .card .title {
+    font-size: 0.9rem; line-height: 1.5; flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .new-badge {
+    position: absolute; top: -8px; left: 8px;
+    background: #e0245e; color: #fff; font-size: 0.68rem; font-weight: 800;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .empty { text-align: center; color: #999; padding: 48px 0; }
+  .site-footer { text-align: center; margin-top: 40px; font-size: 0.78rem; color: #999; }
+  .site-footer a { margin: 0 8px; color: #ccc; }
+  .legal-content { background: #1e1e29; border-radius: 16px; padding: 28px 30px; font-size: 0.9rem; line-height: 1.9; }
+  .legal-content h2 { font-size: 1.05rem; margin: 24px 0 10px; }
+  .legal-content h2:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+<div id="age-gate" class="age-gate">
+  <div class="age-gate-box">
+    <p class="age-gate-title">年齢確認</p>
+    <p class="age-gate-text">このサイトはアダルトコンテンツ(成人向け商品)の紹介を含みます。<br>あなたは18歳以上ですか？</p>
+    <div class="age-gate-buttons">
+      <button type="button" id="age-gate-yes">はい、18歳以上です</button>
+      <a href="https://www.google.com" id="age-gate-no">いいえ</a>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'adapla_age_verified';
+  var gate = document.getElementById('age-gate');
+  if (localStorage.getItem(KEY) === 'yes') {
+    gate.style.display = 'none';
+  } else {
+    document.body.classList.add('age-gate-active');
+  }
+  document.getElementById('age-gate-yes').addEventListener('click', function () {
+    localStorage.setItem(KEY, 'yes');
+    gate.style.display = 'none';
+    document.body.classList.remove('age-gate-active');
+  });
+})();
+</script>
+
+<div class="wrap">
+<h1>アダプラ</h1>
+<p class="subtitle">今すぐ買える成人向け商品をまとめています</p>
+<p class="pr-note">本ページのリンクにはアフィリエイトリンクが含まれます(#PR)。18歳未満の方はご利用いただけません。</p>
+<div id="product-list">
+
+</div>
+<p class="empty">現在掲載できる商品がありません。</p>
+<footer class="site-footer">
+<a href="about.html">運営者情報</a>|<a href="privacy.html">プライバシーポリシー</a>
+</footer>
+</div>
+</body>
+</html>
